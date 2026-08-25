@@ -1,186 +1,453 @@
 <!DOCTYPE html>
 <html lang="uz">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">    
-<title>Remzi.Web </title>
-<!---->
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  
+  <!-- Google Qidiruv (SEO) Sozlamalari -->
+  <title>remzi.web | Modern Web Studio</title>
+  <meta name="description" content="remzi.web - Zamonaviy veb-saytlar yaratish va dizayn xizmati.">
+  <meta name="keywords" content="remzi.web, remzi web, web studio, veb sayt yaratish">
+  <meta name="author" content="remzi.web">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
     * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-   body {
-    background-color: #0f172a;
-    color:#ffffff;
-    font-family: sans-serif;
-    padding: 40px 20px;
-   }
-   .container {
-       max-width: 900px;
-       margin: 0 auto;
-       text-align: center;
-   }
-   .banner h1 {
-        font-size: 36px;
-        margin-bottom: 15px;
-   }
-   .banner p {
-    color: #94a3b8;
-    font-size: 18px;
-    margin-bottom: 30px;
-   }
-   /* Hizmetler Bölümü */
-   .services {
-    display: flex;
-    gap: 20px;
-    margin: 40px 0;
-    flex-wrap: wrap;
-   }
-    .card {
-        background-color: #1e293b;
-        padding: 25px;
-        border-radius: 12px;
-        flex: 1;
-        min-width: 250px;
-        border: 1px solid #334155;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .card h3 {
-        color: #38bdf8;
-        margin-bottom: 10px;
+    body {
+      background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.9)), 
+                  url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #ffffff;
+      min-height: 100vh;
+      padding-bottom: 30px;
     }
-    .card p {
-        color: #94a3b8;
-        font-size: 14px;
-    }      
-     /*Button*/
-     .btn {
-        background-color: #25D366;
-        color: white;
-        padding: 14px 24px;
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: normal;
-        font-size: 16px;
-        display: inline-block;
-        box-shadow: 0 4px 15px rgba(37,211,102,0.4);
-        transition: 0.3s;
-     }
-     .btn:hover {
-        transform: scale(1.05);
-        background-color: #20ba5a;
-     }
-     /*Header / Menyu */
-     header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 15px 0;
-        border-bottom: 40px;
-     }
-     .logo {
-        font-size: 22px;
-        font-weight: bold;
-        color: #38bdf8;
-     }
-     nav {
-        display: flex;
-        gap: 20px;
-     }
-     nav a {
-        color: #94a3b8;
-        text-decoration: none;
-        font-size: 16px;
-        transition: 0.3s;
-     }
-     nav a:hover {
-        color: #38bdf8;
-     }   
-     /* Portfolio */
-     .portfolio-title {
-        color: #ffffff;
-        margin: 40px 0 15px 0;
-        font-size: 22px;
-        text-align: center;
-     }
-     .portfolio-grid {
-        display: flex;
-        gap: 20px;
-        margin-bottom: 40px;
-     }
-     .portfolio-card {
-        background-color: #1e293b;
-        border-radius: 12px;
-        padding: 20px;
-        flex: 1;
-        text-align: left;
-        border: 1px solid #334155;
-     }    
-    
-     .portfolio-card h4 {
-        color: #38bdf8;
-        margin-top: 0;
-        margin-bottom: 10px;
-     }
-     .portfolio-card p {
-        color: #94a3b8;
-        font-size: 14px;
-        line-height: 1.5;
-        margin: 0;
-     }
-</style>  
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 5%;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    .menu-container {
+      position: relative;
+    }
+
+    .burger-btn {
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 5px;
+    }
+
+    .lang-dropdown {
+      display: none;
+      position: absolute;
+      right: 0;
+      top: 35px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      min-width: 120px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .lang-dropdown.active {
+      display: block;
+    }
+
+    .lang-dropdown button {
+      width: 100%;
+      padding: 8px 12px;
+      background: none;
+      border: none;
+      color: #cbd5e1;
+      text-align: left;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 25px 15px 15px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.2rem, 4vw, 1.8rem);
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #cbd5e1;
+      font-size: clamp(0.75rem, 2.5vw, 0.9rem);
+      line-height: 1.4;
+      margin-bottom: 15px;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .card img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 10px;
+    }
+
+    .card-body h3 {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+      color: #38bdf8;
+    }
+
+    .card-body p {
+      color: #cbd5e1;
+      font-size: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(0.95rem, 3vw, 1.1rem);
+      margin: 18px 0 10px;
+    }
+
+    .pay-trigger-wrapper {
+      text-align: center;
+      margin: 15px 0;
+    }
+
+    .pay-btn-main {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #0f172a;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 18px;
+      width: 85%;
+      max-width: 320px;
+      position: relative;
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      color: #cbd5e1;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .pay-form input {
+      width: 100%;
+      padding: 7px 9px;
+      margin: 5px 0;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      color: #fff;
+      font-size: 0.75rem;
+    }
+
+    .pay-form-row {
+      display: flex;
+      gap: 6px;
+    }
+
+    .submit-pay-btn {
+      width: 100%;
+      padding: 8px;
+      background: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-top: 8px;
+      cursor: pointer;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!--Header / Menyu -->
-        <header>             
-            <div class="logo">Web Studio</div>
-            <nav>
-                <a href="#">Anasayfa</a>
-                <a href="#">Hizmetler</a>
-                <a href="#">Portfolyo</a>
-            </nav>
-        </header>
-       
-        <!--Ana Bölüm-->
-    <div class="banner">
-    <h1>Işletmeniz için Modern Web Siteleri</h1>
-    <p>Müşterilerinizi artiran, hizli, şik ve mobil uyumli profesyonel web tasarimlari hazirliyoruz.</p>
+
+  <header>
+    <div class="logo">remzi.web</div>
+    <div class="menu-container">
+      <button class="burger-btn" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+      <div class="lang-dropdown" id="langMenu">
+        <button onclick="setLang('tr')">Türkçe</button>
+        <button onclick="setLang('tk')">Türkmen</button>
+        <button onclick="setLang('en')">English</button>
+        <button onclick="setLang('uz')">O'zbek</button>
+        <button onclick="setLang('ru')">Русский</button>
+      </div>
     </div>
-    <!--Hizmetler-->
-    <div class="services">
-        <div class="card">
-            <h3>&#128640; Hızlı ve Güvenli</h3>
-            <p>Web siteniz tüm cihazlarda saniyeler içinde açilir ve kesintisiz çalişir.</p>
+  </header>
+
+  <section class="hero">
+    <h1 id="title">Biznesingiz uchun Zamonaviy Veb-saytlar</h1>
+    <p id="subtitle">Mijozlaringizni ko'paytiradigan, tez, chiroyli va mobilga mos professional veb-dizaynlar tayyorlaymiz.</p>
+  </section>
+
+  <div class="container">
+    <h2 class="section-title" id="secTitle">Namuna Ishlarimiz</h2>
+
+    <div class="grid-2">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="E-Commerce">
+        <div class="card-body">
+          <h3 id="card1Title">E-Tijorat Sayti</h3>
+          <p id="card1Desc">Mahsulotlaringizni ko'rsatuvchi zamonaviy onlayn katalog va do'kon dizayni.</p>
         </div>
-        <div class="card">
-            <h3>&#128241; Mobil Uyumli </h3>
-            <p>Telefon, tablet ve bilgisayarlarda kusursuz ve modern görünüm sağlar.</p>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Corporate">
+        <div class="card-body">
+          <h3 id="card2Title">Kompaniya Sayti</h3>
+          <p id="card2Desc">Xizmatlaringiz va brendingizni tanishtiruvchi professional landing page sahifasi.</p>
         </div>
-        <div class="card">
-            <h3><span class="sms-icon"></span> Doğrudan Iletişim</h3>
-            <p>Müşterileriniz tek bir tikla WhatsApp üzerinden sizinle aninda iletişime geçer.</p>
-        </div>
+      </div>
     </div>
 
-    <!--Protfolio-->
-    <h2 class="portfolio-title">Örnek Çalişmalarımız</h2>
-    <div class="portfolio-grid">
-      <div class="portfolio-card">
-        <h4>E-Tiçaret & Mağaza Sitesi</h4>
-        <p>Ürünlerinizi sergileyebileçeğiniz modern online katalog ve mağaza tasarimi.</p>
+    <div class="pay-trigger-wrapper">
+      <button class="pay-btn-main" onclick="openModal()">
+        <i class="fa-regular fa-credit-card"></i> <span id="payBtnText">Karta orqali to'lov qilish</span>
+      </button>
+    </div>
+
+    <h2 class="section-title" id="contactTitle">Biz Bilan Bog'laning</h2>
+    <div class="social-links">
+      <a href="https://wa.me/905387487740" target="_blank" class="social-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://t.me/+905387487740" target="_blank" class="social-btn" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+      <a href="https://instagram.com/" target="_blank" class="social-btn" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://facebook.com/" target="_blank" class="social-btn" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="mailto:hudaybergenowhursant078@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+      <a href="tel:+905387487740" class="social-btn" title="Telefon"><i class="fa-solid fa-phone"></i></a>
+    </div>
+  </div>
+
+  <div class="modal" id="payModal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal()">&times;</span>
+      <h3 style="margin-bottom: 10px; color: #38bdf8; font-size: 0.9rem;" id="modalHead">Karta Ma'lumotlari</h3>
+      <form class="pay-form" onsubmit="handlePayment(event)">
+        <input type="text" id="inputName" placeholder="Ismingiz va Familiyangiz" required>
+        <input type="text" id="inputCard" placeholder="0000 0000 0000 0000" maxlength="19" required>
+        <div class="pay-form-row">
+          <input type="text" id="inputExp" placeholder="MM/YY" maxlength="5" required>
+          <input type="password" id="inputCvc" placeholder="CVC/CVV" maxlength="3" required>
         </div>
-    <div class="portfolio-card">
-        <h4>Kurumsal Şirket Sitesi</h4>
-        <p>Hizmetlerinizi ve markanizi tanitan profesyonel landing page sayfasi.</p>
-       </div>
+        <input type="number" id="inputAmount" placeholder="To'lov summasi ($)" required>
+        <button type="submit" class="submit-pay-btn" id="modalSubmitBtn">To'lovni Tasdiqlash</button>
+      </form>
     </div>
-    <!--Buton-->
-    <div style="text-align: center; margin-top: 30px;">
-    <a href="https://wa.me/905387487740" class="btn">WhatsApp ile Hemen Teklif Alın</a> 
-    </div>
-</div>  
+  </div>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('langMenu').classList.toggle('active');
+    }
+
+    function openModal() {
+      document.getElementById('payModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('payModal').style.display = 'none';
+    }
+
+    function handlePayment(e) {
+      e.preventDefault();
+      alert("Ma'lumotlar WhatsApp orqali tasdiqlash uchun yuborilmoqda...");
+      window.location.href = "https://wa.me/905387487740?text=Salom,%20men%20saytdan%20to'lov%20qildim.";
+      closeModal();
+    }
+
+    const translations = {
+      tr: {
+        title: "İşletmeniz için Modern Web Siteleri",
+        subtitle: "Müşterilerinizi artıran, hızlı, şık ve mobil uyumlu profesyonel web tasarımları hazırlıyoruz.",
+        secTitle: "Örnek Çalışmalarımız",
+        card1Title: "E-Ticaret Sitesi",
+        card1Desc: "Ürünlerinizi sergileyebileceğiniz modern online katalog ve mağaza tasarımı.",
+        card2Title: "Kurumsal Şirket Sitesi",
+        card2Desc: "Hizmetlerinizi ve markanızı tanıtan profesyonel landing page sayfası.",
+        payBtnText: "Kredi Kartı ile Ödeme Yap",
+        contactTitle: "Bize Ulaşın",
+        modalHead: "Kart Bilgileri",
+        modalSubmitBtn: "Ödemeyi Onayla",
+        inputName: "Adınız ve Soyadınız",
+        inputAmount: "Ödeme Tutarı ($)"
+      },
+      tk: {
+        title: "Biznesiňiz üçin Döwrebap Web Saýtlary",
+        subtitle: "Müşderileriňizi köpeldýän, çalt, owadan we mobil amatly hünärmen web dizaýnlaryny taýýarlaýarys.",
+        secTitle: "Meselemiz we Işlerimiz",
+        card1Title: "E-Söwda Saýty",
+        card1Desc: "Önümleriňizi görkezip biljek döwrebap onlaýn katalog we dükan dizaýny.",
+        card2Title: "Kutular we Şereket Saýty",
+        card2Desc: "Hyzmatlaryňyzy we markaňyzy tanyşdyrýan hünärmen web sahypasy.",
+        payBtnText: "Kartyňyz bilen töleg ediň",
+        contactTitle: "Biz bilen Habarlaşyň",
+        modalHead: "Kart Maglumatlary",
+        modalSubmitBtn: "Tölegi Tassyklaň",
+        inputName: "Adyňyz we Familiýaňyz",
+        inputAmount: "Töleg Müşderi ($)"
+      },
+      en: {
+        title: "Modern Websites for Your Business",
+        subtitle: "We create professional, fast, elegant, and mobile-friendly web designs that grow your audience.",
+        secTitle: "Our Sample Works",
+        card1Title: "E-Commerce Website",
+        card1Desc: "Modern online catalog and store design to showcase your products.",
+        card2Title: "Corporate Website",
+        card2Desc: "Professional landing page showcasing your brand and services.",
+        payBtnText: "Pay with Credit Card",
+        contactTitle: "Contact Us",
+        modalHead: "Card Details",
+        modalSubmitBtn: "Confirm Payment",
+        inputName: "Full Name",
+        inputAmount: "Payment Amount ($)"
+      },
+      uz: {
+        title: "Biznesingiz uchun Zamonaviy Veb-saytlar",
+        subtitle: "Mijozlaringizni ko'paytiradigan, tez, chiroyli va mobilga mos professional veb-dizaynlar tayyorlaymiz.",
+        secTitle: "Namuna Ishlarimiz",
+        card1Title: "E-Tijorat Sayti",
+        card1Desc: "Mahsulotlaringizni ko'rsatuvchi zamonaviy onlayn katalog va do'kon dizayni.",
+        card2Title: "Kompaniya Sayti",
+        card2Desc: "Xizmatlaringiz va brendingizni tanishtiruvchi professional landing page sahifasi.",
+        payBtnText: "Karta orqali to'lov qilish",
+        contactTitle: "Biz Bilan Bog'laning",
+        modalHead: "Karta Ma'lumotlari",
+        modalSubmitBtn: "To'lovni Tasdiqlash",
+        inputName: "Ismingiz va Familiyangiz",
+        inputAmount: "To'lov summasi ($)"
+      },
+      ru: {
+        title: "Современные Веб-сайты для Вашего Бизнеса",
+        subtitle: "Создаем быстрые, стильные и мобильные профессиональные веб-сайты для привлечения клиентов.",
+        secTitle: "Примеры Наших Работ",
+        card1Title: "Интернет-магазин",
+        card1Desc: "Современный онлайн-каталог и дизайн магазина для демонстрации ваших товаров.",
+        card2Title: "Корпоративный Сайт",
+        card2Desc: "Профессиональный лендинг для презентации ваших услуг и бренда.",
+        payBtnText: "Оплата банковской картой",
+        contactTitle: "Связаться с Нами",
+        modalHead: "Данные Карты",
+        modalSubmitBtn: "Подтвердить Оплату",
+        inputName: "Имя и Фамилия",
+        inputAmount: "Сумма оплаты ($)"
+      }
+    };
+
+    function setLang(lang) {
+      document.getElementById('title').innerText = translations[lang].title;
+      document.getElementById('subtitle').innerText = translations[lang].subtitle;
+      document.getElementById('secTitle').innerText = translations[lang].secTitle;
+      document.getElementById('card1Title').innerText = translations[lang].card1Title;
+      document.getElementById('card1Desc').innerText = translations[lang].card1Desc;
+      document.getElementById('card2Title').innerText = translations[lang].card2Title;
+      document.getElementById('card2Desc').innerText = translations[lang].card2Desc;
+      document.getElementById('payBtnText').innerText = translations[lang].payBtnText;
+      document.getElementById('contactTitle').innerText = translations[lang].contactTitle;
+      document.getElementById('modalHead').innerText = translations[lang].modalHead;
+      document.getElementById('modalSubmitBtn').innerText = translations[lang].modalSubmitBtn;
+      document.getElementById('inputName').placeholder = translations[lang].inputName;
+      document.getElementById('inputAmount').placeholder = translations[lang].inputAmount;
+      toggleMenu();
+    }
+  </script>
 </body>
 </html>
