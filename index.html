@@ -1,1 +1,363 @@
+[17:44, 29/08/2026] Remzi: <!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>remzi.web | Modern Web Studio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #090a0f;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --primary: #00f2fe;
+      --secondary: #4facfe;
+      --text: #f0f4f8;
+      --text-dim: #94a3b8;
+    }
 
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    /* Fon yog'dusi */
+    .…
+[17:51, 29/08/2026] Remzi: jk;j
+[17:51, 29/08/2026] Remzi: <!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>remzi.web | Modern Web Studio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #090a0f;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --primary: #00f2fe;
+      --secondary: #4facfe;
+      --text: #f0f4f8;
+      --text-dim: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+    .bg-glow {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
+      background: radial-gradient(circle at 10% 20%, rgba(79, 172, 254, 0.15) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(0, 242, 254, 0.12) 0%, transparent 40%);
+      filter: blur(80px);
+    }
+
+    @keyframes floatAnimation {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); }
+      50% { box-shadow: 0 0 35px rgba(0, 242, 254, 0.7); }
+      100% { box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); }
+    }
+
+    .floating { animation: floatAnimation 4s ease-in-out infinite; }
+
+    .welcome-banner {
+      background: linear-gradient(90deg, rgba(0, 242, 254, 0.15), rgba(79, 172, 254, 0.15));
+      border-bottom: 1px solid var(--primary); padding: 12px 20px; text-align: center;
+      font-size: 1.05rem; font-weight: 600; color: var(--primary);
+    }
+
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 8%; backdrop-filter: blur(15px); position: sticky; top: 0; z-index: 999999;
+      border-bottom: 1px solid var(--border); background: rgba(9, 10, 15, 0.95);
+    }
+
+    .logo { 
+      font-size: 1.6rem; font-weight: 800; 
+      background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+    }
+
+    .menu-btn {
+      font-size: 1.4rem; color: #000; cursor: pointer; background: var(--primary);
+      border: 1px solid var(--primary); padding: 8px 16px; border-radius: 10px; outline: none; transition: all 0.3s;
+    }
+    .menu-btn:hover { background: var(--secondary); transform: scale(1.05); }
+
+    .nav-dropdown {
+      display: none; position: absolute; top: 65px; right: 8%; background: #0f172a;
+      border: 1px solid var(--primary); border-radius: 12px; padding: 10px; width: 200px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9); z-index: 1000000;
+    }
+    .nav-dropdown.show { display: block !important; animation: fadeIn 0.2s ease-in-out; }
+    .nav-dropdown h4 { font-size: 0.75rem; color: var(--text-dim); margin: 4px 6px 8px; text-transform: uppercase; border-bottom: 1px solid var(--border); padding-bottom: 4px; }
+    
+    .lang-opt {
+      display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+      background: none; border: none; color: var(--text); padding: 9px 10px; font-size: 0.95rem;
+      cursor: pointer; border-radius: 6px; transition: background 0.2s;
+    }
+    .lang-opt:hover { background: rgba(0, 242, 254, 0.15); color: var(--primary); }
+
+    .hero { text-align: center; padding: 50px 20px 30px; max-width: 900px; margin: 0 auto; }
+    .hero h1 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.2; margin-bottom: 18px; font-weight: 800; }
+    .hero h1 span { background: linear-gradient(90deg, var(--primary), #00c6ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero p { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 25px; }
+
+    .btn-glow {
+      display: inline-flex; align-items: center; gap: 10px; padding: 12px 28px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #000;
+      font-weight: 700; border-radius: 12px; text-decoration: none;
+      animation: pulseGlow 3s infinite ease-in-out; transition: all 0.3s ease; border: none; cursor: pointer;
+    }
+    .btn-glow:hover { transform: translateY(-3px) scale(1.02); }
+
+    .section-title { text-align: center; font-size: 1.6rem; margin: 40px 0 25px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    
+    .card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: all 0.3s ease; }
+    .card:hover { transform: translateY(-6px); border-color: var(--primary); box-shadow: 0 10px 20px rgba(0, 242, 254, 0.15); }
+    .card img { width: 100%; height: 260px; object-fit: cover; object-position: top; }
+    .card-body { padding: 15px; }
+    .card-body h3 { font-size: 1.1rem; margin-bottom: 6px; }
+    .card-body p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.4; }
+
+    .contact-container { max-width: 650px; margin: 50px auto; background: var(--card-bg); border: 1px solid var(--border); border-radius: 18px; padding: 25px; backdrop-filter: blur(12px); }
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; margin-bottom: 5px; color: var(--text-dim); font-size: 0.88rem; }
+    .form-group input, .form-group textarea { width: 100%; padding: 11px; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border); border-radius: 8px; color: #fff; font-size: 0.92rem; outline: none; }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--primary); }
+
+    .floating-bar { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 99; }
+    .float-btn { width: 48px; height: 48px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #fff; font-size: 1.2rem; box-shadow: 0 8px 20px rgba(0,0,0,0.4); text-decoration: none; transition: transform 0.3s ease; }
+    .float-btn:hover { transform: scale(1.15); }
+    .whatsapp { background: #25D366; }
+    .phone { background: #00f2fe; color: #000; }
+
+    footer { text-align: center; padding: 25px; color: var(--text-dim); border-top: 1px solid var(--border); margin-top: 50px; font-size: 0.85rem; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow"></div>
+
+  <div class="welcome-banner" id="welcomeTxt">
+    <i class="fas fa-hand-wave"></i> Merhaba ben Remzi! Size nasıl yardımcı olabilirim?
+  </div>
+
+  <header>
+    <div class="logo">remzi.web</div>
+    <button class="menu-btn" id="menuBtn" onclick="toggleMenu(event)"><i class="fas fa-bars"></i></button>
+
+    <div class="nav-dropdown" id="menuDropdown">
+      <h4 id="langTitle">Dil Seçin</h4>
+      <button class="lang-opt" onclick="setLanguage('tr')">🇹🇷 Türkçe</button>
+      <button class="lang-opt" onclick="setLanguage('tk')">🇹🇲 Türkmen</button>
+      <button class="lang-opt" onclick="setLanguage('uz')">🇺🇿 O'zbekcha</button>
+      <button class="lang-opt" onclick="setLanguage('en')">🇬🇧 English</button>
+      <button class="lang-opt" onclick="setLanguage('ru')">🇷🇺 Русский</button>
+    </div>
+  </header>
+
+  <section class="hero floating">
+    <h1 id="heroTitle">İşletmeniz İçin <span>Modern Web Siteleri</span> Hazırlıyoruz</h1>
+    <p id="heroDesc">Müşterilerinizi artıran, hızlı, şık ve mobil uyumlu profesyonel web tasarımları.</p>
+    <a href="#contact" class="btn-glow" id="orderBtn"><i class="fas fa-paper-plane"></i> Sipariş Ver</a>
+  </section>
+
+  <h2 class="section-title" id="servicesTitle">Örnek Çalışmalarımız</h2>
+
+  <div class="grid">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=500&q=80" alt="Landing Page">
+      <div class="card-body">
+        <h3 id="card1Title">Landing Page & Yeni Web Site</h3>
+        <p id="card1Desc">Hızlı açılan, yüksek dönüşümlü ve modern tasarıma sahip yeni web siteleri.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80" alt="E-Commerce">
+      <div class="card-body">
+        <h3 id="card2Title">E-Ticaret Sitesi</h3>
+        <p id="card2Desc">Ürünlerinizi sergileyebileceğiniz modern online katalog ve mağaza tasarımı.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=500&q=80" alt="Kurumsal">
+      <div class="card-body">
+        <h3 id="card3Title">Kurumsal Şirket Sitesi</h3>
+        <p id="card3Desc">Hizmetlerinizi ve markanızı tanıtan profesyonel landing page sayfası.</p>
+      </div>
+    </div>
+
+    <div class="card floating">
+      <img src="remzi.jpg" alt="Remzi Developer" onerror="this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=500&q=80'">
+      <div class="card-body">
+        <h3 id="card4Title">Remzi Developer</h3>
+        <p id="card4Desc">Web Studio & Geliştirici. Kişisel markanız ve profesyonel dijital çözümleriniz için özel tasarım.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="contact-container" id="contact">
+    <h2 style="text-align: center; margin-bottom: 6px;" id="formTitle">Sipariş Gönderin</h2>
+    <p style="text-align: center; color: var(--text-dim); margin-bottom: 20px; font-size: 0.88rem;" id="formSub">Formu doldurun, sizinle doğrudan iletişime geçelim.</p>
+    
+    <form action="https://formspree.io/f/hudaybergenowhursant078@gmail.com" method="POST" onsubmit="sendToWhatsapp(event)">
+      <div class="form-group">
+        <label id="lbl1">Adınız</label>
+        <input type="text" id="custName" name="name" placeholder="Örn: Remzi" required>
+      </div>
+      <div class="form-group">
+        <label id="lbl2">Telefon / WhatsApp</label>
+        <input type="text" id="custPhone" name="phone" placeholder="+90 500 000 00 00" required>
+      </div>
+      <div class="form-group">
+        <label id="lbl3">Projeniz Hakkında</label>
+        <textarea id="custMsg" name="message" rows="3" placeholder="Nasıl bir site istiyorsunuz?"></textarea>
+      </div>
+      <button type="submit" class="btn-glow" style="width: 100%; justify-content: center;" id="submitBtn">
+        Siparişi Gönder
+      </button>
+    </form>
+  </section>
+
+  <div class="floating-bar">
+    <a href="https://wa.me/905387487740" target="_blank" class="float-btn whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <a href="tel:+905387487740" class="float-btn phone"><i class="fas fa-phone"></i></a>
+  </div>
+
+  <footer>
+    <p>© 2026 remzi.web | Mail: hudaybergenowhursant078@gmail.com</p>
+  </footer>
+
+  <script>
+    function toggleMenu(e) {
+      if (e) e.stopPropagation();
+      var dropdown = document.getElementById('menuDropdown');
+      dropdown.classList.toggle('show');
+    }
+
+    document.addEventListener('click', function(event) {
+      var dropdown = document.getElementById('menuDropdown');
+      var btn = document.getElementById('menuBtn');
+      if (dropdown && !dropdown.contains(event.target) && !btn.contains(event.target)) {
+        dropdown.classList.remove('show');
+      }
+    });
+
+    function sendToWhatsapp(e) {
+      const name = document.getElementById('custName').value;
+      const phone = document.getElementById('custPhone').value;
+      const msg = document.getElementById('custMsg').value;
+      
+      const text = Merhaba Remzi, yeni sipariş var:%0A- İsim: ${name}%0A- Tel: ${phone}%0A- Mesaj: ${msg};
+      window.open(https://wa.me/905387487740?text=${text}, '_blank');
+    }
+
+    const dict = {
+      tr: {
+        welcome: "👋 Merhaba ben Remzi! Size nasıl yardımcı olabilirim?",
+        heroTitle: "İşletmeniz İçin <span>Modern Web Siteleri</span> Hazırlıyoruz",
+        heroDesc: "Müşterilerinizi artıran, hızlı, şık ve mobil uyumlu profesyonel web tasarımları.",
+        orderBtn: "Sipariş Ver", servicesTitle: "Örnek Çalışmalarımız",
+        card1Title: "Landing Page & Yeni Web Site", card1Desc: "Hızlı açılan, yüksek dönüşümlü ve modern tasarıma sahip yeni web siteleri.",
+        card2Title: "E-Ticaret Sitesi", card2Desc: "Ürünlerinizi sergileyebileceğiniz modern online katalog ve mağaza tasarımı.",
+        card3Title: "Kurumsal Şirket Sitesi", card3Desc: "Hizmetlerinizi ve markanızı tanıtan profesyonel landing page sayfası.",
+        card4Title: "Remzi Developer", card4Desc: "Web Studio & Geliştirici. Kişisel markanız ve profesyonel dijital çözümleriniz için özel tasarım.",
+        formTitle: "Sipariş Gönderin", formSub: "Formu doldurun, sizinle doğrudan iletişime geçelim.",
+        lbl1: "Adınız", lbl2: "Telefon / WhatsApp", lbl3: "Projeniz Hakkında", submitBtn: "Siparişi Gönder",
+        langTitle: "Dil Seçin"
+      },
+      tk: {
+        welcome: "👋 Salam, men Remzi! Size nähili kömek edip bilerin?",
+        heroTitle: "Biznesňiz Üçin <span>Modern Web Saytlar</span> Taýýarlaýarys",
+        heroDesc: "Müşderileri köpeltýän, çalt we mobil görnüşli professional web taslamalar.",
+        orderBtn: "Sargyt Etmek", servicesTitle: "Loyiha Nusgalarymyz",
+        card1Title: "Landing Page & Täze Web Saýt", card1Desc: "Ýokary hilli, modern dizaýnly we çalt işleýän täze web saýtlar.",
+        card2Title: "E-Söwda Saýty", card2Desc: "Harytlaryňyzy görkezip biljek modern onlaýn katalog we dükan dizaýny.",
+        card3Title: "Kompaniýa Saýty", card3Desc: "Hyzmatlaryňyzy we markaňyzy tanyşdyrýan professional landing page sahypasy.",
+        card4Title: "Remzi Developer", card4Desc: "Web Studio & Düzüji. Şahsy markaňyz we professional sanly çözgütleriňiz üçin ýörite dizaýn.",
+        formTitle: "Sargyt Ugurlaň", formSub: "Formany dolduryň, siz bilen göni habarlaşarys.",
+        lbl1: "Adyňyz", lbl2: "Telefon / WhatsApp", lbl3: "Taslama Barada", submitBtn: "Sargydy Ugurlaň",
+        langTitle: "Dil Saýlaň"
+      },
+      uz: {
+        welcome: "👋 Salom, men Remzi! Sizga qanday yordam bera olaman?",
+        heroTitle: "Biznesingiz Uchun <span>Zamonaviy Veb-Saytlar</span> Yaratamiz",
+        heroDesc: "Mijozlaringizni oshiradigan, tez va mobil moslashuvchan professional dizaynlar.",
+        orderBtn: "Buyurtma Berish", servicesTitle: "Namuna Loyihalarimiz",
+        card1Title: "Landing Page & Yangi Sayt Yaratish", card1Desc: "Tez ishlaydigan, yuqori natija beruvchi va zamonaviy dizayndagi yangi saytlar.",
+        card2Title: "Internet-Do'kon Sayti", card2Desc: "Mahsulotlaringizni ko'rsatuvchi zamonaviy onlayn katalog va do'kon dizayni.",
+        card3Title: "Kompaniya Veb-Sayti", card3Desc: "Xizmatlaringiz va brendingizni tanishtiruvchi professional landing page sahifasi.",
+        card4Title: "Remzi Developer", card4Desc: "Web Studio & Dasturchi. Shaxsiy brendingiz va professional raqamli yechimlaringiz uchun maxsus dizayn.",
+        formTitle: "Buyurtma Yuborish", formSub: "Formani to'ldiring, siz bilan darhol bog'lanamiz.",
+        lbl1: "Ismingiz", lbl2: "Telefon / WhatsApp", lbl3: "Loyiha Haqida", submitBtn: "Buyurtmani Yuborish",
+        langTitle: "Tilni Tanlang"
+      },
+      ru: {
+        welcome: "👋 Здравствуйте, я Ремзи! Чем могу вам помочь?",
+        heroTitle: "Создаем <span>Современные Веб-Сайты</span> Для Вашего Бизнеса",
+        heroDesc: "Быстрые, стильные и мобильные сайты, привлекающие новых клиентов.",
+        orderBtn: "Сделать Заказ", servicesTitle: "Наши Работы",
+        card1Title: "Landing Page & Новый Веб-Сайт", card1Desc: "Быстрые, высококонверсионные и современные веб-сайты для бизнеса.",
+        card2Title: "Интернет-Магазин", card2Desc: "Современный онлайн-каталог и дизайн магазина для демонстрации ваших товаров.",
+        card3Title: "Корпоративный Сайт", card3Desc: "Профессиональный лендинг для презентации ваших услуг и бренда.",
+        card4Title: "Remzi Developer", card4Desc: "Web Studio & Разработчик. Индивидуальный дизайн для вашего бренда и цифровых решений.",
+        formTitle: "Оставить Заявку", formSub: "Заполните форму, и мы свяжемся с вами в ближайшее время.",
+        lbl1: "Ваше Имя", lbl2: "Телефон / WhatsApp", lbl3: "О Проекте", submitBtn: "Отправить Заявку",
+        langTitle: "Выберите Язык"
+      },
+      en: {
+        welcome: "👋 Hello, I'm Remzi! How can I help you?",
+        heroTitle: "We Create <span>Modern Websites</span> For Your Business",
+        heroDesc: "Fast, elegant, and mobile-friendly web designs that grow your audience.",
+        orderBtn: "Order Now", servicesTitle: "Our Work Examples",
+        card1Title: "Landing Page & New Website", card1Desc: "High-converting, fast-loading modern websites built from scratch.",
+        card2Title: "E-Commerce Website", card2Desc: "Modern online catalog and store design to display your products.",
+        card3Title: "Corporate Website", card3Desc: "Professional landing page showcasing your brand and services.",
+        card4Title: "Remzi Developer", card4Desc: "Web Studio & Developer. Custom designs for your personal brand and digital solutions.",
+        formTitle: "Send an Order", formSub: "Fill out the form and we will contact you directly.",
+        lbl1: "Your Name", lbl2: "Phone / WhatsApp", lbl3: "About Project", submitBtn: "Send Order",
+        langTitle: "Select Language"
+      }
+    };
+
+    function setLanguage(lang) {
+      const data = dict[lang];
+      document.getElementById('welcomeTxt').innerHTML = <i class="fas fa-hand-wave"></i> ${data.welcome};
+      document.getElementById('heroTitle').innerHTML = data.heroTitle;
+      document.getElementById('heroDesc').innerText = data.heroDesc;
+      document.getElementById('orderBtn').innerHTML = <i class="fas fa-paper-plane"></i> ${data.orderBtn};
+      document.getElementById('servicesTitle').innerText = data.servicesTitle;
+      document.getElementById('card1Title').innerText = data.card1Title;
+      document.getElementById('card1Desc').innerText = data.card1Desc;
+      document.getElementById('card2Title').innerText = data.card2Title;
+      document.getElementById('card2Desc').innerText = data.card2Desc;
+      document.getElementById('card3Title').innerText = data.card3Title;
+      document.getElementById('card3Desc').innerText = data.card3Desc;
+      document.getElementById('card4Title').innerText = data.card4Title;
+      document.getElementById('card4Desc').innerText = data.card4Desc;
+      document.getElementById('formTitle').innerText = data.formTitle;
+      document.getElementById('formSub').innerText = data.formSub;
+      document.getElementById('lbl1').innerText = data.lbl1;
+      document.getElementById('lbl2').innerText = data.lbl2;
+      document.getElementById('lbl3').innerText = data.lbl3;
+      document.getElementById('submitBtn').innerText = data.submitBtn;
+      document.getElementById('langTitle').innerText = data.langTitle;
+      
+      var dropdown = document.getElementById('menuDropdown');
+      dropdown.classList.remove('show');
+    }
+  </script>
+
+</body>
+</html>
